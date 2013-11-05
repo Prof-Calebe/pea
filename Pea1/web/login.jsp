@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sistema para o plano de Ensino e Aula da FCI</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Login</h1>
         <form name="formLogin" action="menuPrincipal.jsp">
             <h6>Nome:</h6>
             <input type="text" name="user" value="" size="25" />
