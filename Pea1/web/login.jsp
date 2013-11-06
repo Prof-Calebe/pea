@@ -14,9 +14,9 @@
     <body>
         <h1>Login</h1>
         <form name="formLogin" action="menuPrincipal.jsp">
-            <h6>Nome:</h6>
+            <h3>Nome:</h3>
             <input type="text" name="user" value="" size="25" />
-            <h6>Senha:</h6>
+            <h3>Senha:</h3>
             <input type="text" name="senha" value="" size="25" />
             <input type="submit" value="Submit" name="Submit" />
         </form>

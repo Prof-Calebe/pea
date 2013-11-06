@@ -36,8 +36,8 @@ public class BaseDAO {
 	
 	
 	public void abreDB(){
-		
-		factory = Persistence.createEntityManagerFactory("Pea"); 
+            
+		factory = Persistence.createEntityManagerFactory("Pea1PU"); 
 		manager = factory.createEntityManager();
 	}
 	
