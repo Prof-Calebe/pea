@@ -8,18 +8,9 @@
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<%  Login meuLogin = new Login(); 
-    try{
-        //abri conexao com o banco de dados
-        meuLogin.abreDB();
-        meuLogin.setNome(request.getParameter("user"));
-        meuLogin.setSenha(request.getParameter("senha"));
-        meuLogin.salvar(meuLogin);
-        meuLogin.fechaDB();
-    }catch(Exception e){
-        e.printStackTrace();
-        e.getMessage();
-    }
+<% // recebendo os paramentos enviados pelo form no metodo get
+    String nome = new String(request.getParameter("user"));
+    String senha = new String(request.getParameter("senha"));
 
 %>
 

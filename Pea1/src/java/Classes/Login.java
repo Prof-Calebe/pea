@@ -8,12 +8,13 @@ package Classes;
  *
  * @author Song
  */
-
+import java.util.List;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 @Entity
 public class Login extends BaseDAO implements Serializable{
@@ -55,8 +56,13 @@ public class Login extends BaseDAO implements Serializable{
             return retornaManager().find(Login.class, id);
         }catch(Exception e){
             return null;
-        }   
-        
+        }      
+    }
+    
+    public List<Login> pesquisaLoginPeloLogin(String nome, String senha){
+        Query minhaQuery = retornaManager().createQuery("select u from Login u where u.nome = '"+nome+ "' and u.senha = '"+senha+"'" );
+        List<Login> retorno = minhaQuery.getResultList();
+        return retorno;
     }
     
 }
