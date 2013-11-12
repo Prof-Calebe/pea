@@ -33,7 +33,7 @@
         }
         
         if(confere.equals(null) != true){
-            response.sendRedirect("menuPrincipal.jsp?user="+confere.getNome()+"&senha="+confere.getSenha());
+            response.sendRedirect("menuPrincipal.jsp?user="+confere.getNome());
         }
     }
     
@@ -49,13 +49,16 @@
         <title>Sistema para o plano de Ensino e Aula da FCI</title>
     </head>
     <body>
-        <h1>Login</h1>
-        <form name="formLogin" action="login.jsp">
-            <h3>Nome:</h3>
-            <input type="text" name="user" value="" size="25" />
-            <h3>Senha:</h3>
-            <input type="password" name="senha" value="" size="25" />
-            <input type="submit" value="Submit" name="Submit" />
-        </form>
+        <div align="center">
+            <h1>Login</h1>
+            <form name="formLogin" action="login.jsp">
+                <h3>Nome:</h3>
+                <input type="text" name="user" value="" size="25" />
+                <h3>Senha:</h3>
+                <input type="password" name="senha" value="" size="25" />
+                <br/>
+                <input type="submit" value="Submit" name="Submit" />
+            </form>
+        </div>
     </body>
 </html>

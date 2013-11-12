@@ -24,15 +24,17 @@ public class Login extends BaseDAO implements Serializable{
     
     private String nome;
     private String senha;
+    private String tipoLogin;
 
     public Login(){
         super();
     }
     
-    public Login(String nome, String senha){
+    public Login(String nome, String senha, String tipoLogin){
         super();
         this.nome = nome;
         this.senha = senha;
+        this.tipoLogin = tipoLogin;
     }
     
     public String getNome() {
@@ -49,6 +51,14 @@ public class Login extends BaseDAO implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    public String getTipoLogin() {
+        return tipoLogin;
+    }
+
+    public void setTipoLogin(String tipoLogin) {
+        this.tipoLogin = tipoLogin;
     }
     
     public Login pesquisaLoginPeloID(Long id){

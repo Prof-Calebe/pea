@@ -10,7 +10,6 @@
 
 <% // recebendo os paramentos enviados pelo form no metodo get
     String nome = new String(request.getParameter("user"));
-    String senha = new String(request.getParameter("senha"));
 
 %>
 
@@ -21,6 +20,14 @@
         <title>Sistema para o plano de Ensino e Aula da FCI</title>
     </head>
     <body>
-        <h1>MENU PRINCIPAL</h1>
+        <div align="center">
+            <h1>Bem Vindo!!! <%=nome%></h1>
+            <br/>
+            <h1>MENU PRINCIPAL</h1>
+            <input type="button" value="Visualizar Plano de Aula" />
+            <br/>
+            <input type="button" value="Visualizar Plano de Ensino" />
+            <br/>
+        </div>
     </body>
 </html>
