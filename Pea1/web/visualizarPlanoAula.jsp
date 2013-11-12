@@ -1,12 +1,12 @@
 <%-- 
-    Document   : menuPrincipal
-    Created on : 05/11/2013, 13:00:30
+    Document   : visualizarPlanoAula
+    Created on : 12/11/2013, 16:29:30
     Author     : Song
 --%>
+
 <%@page import="Classes.BaseDAO" %>
 <%@page import="Classes.Login" %>
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
-
 
 <%  // recebendo o id do usuario passado pelo paramento enviado pelo form no metodo get
     String userID = new String(request.getParameter("user"));
@@ -25,24 +25,6 @@
     }
 %>
 
-<!--este hidden do id do usuario vai ser passado para a funcao javascript-->
-<input type="hidden" id="userID" value="<%=meuLogin.getId()%>" />
-
-<script>
-    function visualizarPlanoEnsino(){
-        var search = document.getElementById('userID').value;
-        window.location = "visualizarPlanoEnsino.jsp?user="+search;
-    }
-</script>
-
-<script>
-    function visualizarPlanoAula(){
-        var search = document.getElementById('userID').value;
-        window.location = "visualizarPlanoAula.jsp?user="+search;
-    }
-</script>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,13 +38,7 @@
             </a>
         </div>
         <div align="center">
-            <h1>Bem Vindo!!! <%=meuLogin.getNome()%></h1>
-            <br/>
-            <h1>MENU PRINCIPAL</h1>
-            <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula()" />
-            <br/>
-            <input type="button" name="btn_planoEnsino" value="Visualizar Plano de Ensino" onclick="visualizarPlanoEnsino()" />
-            <br/>
+            <h1>Plano de Aula <%=meuLogin.getNome()%></h1>
         </div>
     </body>
 </html>

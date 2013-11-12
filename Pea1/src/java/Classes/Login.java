@@ -61,6 +61,14 @@ public class Login extends BaseDAO implements Serializable{
         this.tipoLogin = tipoLogin;
     }
     
+     public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    
     public Login pesquisaLoginPeloID(Long id){
         try{
             return retornaManager().find(Login.class, id);

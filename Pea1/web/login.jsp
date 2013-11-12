@@ -33,7 +33,7 @@
         }
         
         if(confere.equals(null) != true){
-            response.sendRedirect("menuPrincipal.jsp?user="+confere.getNome());
+            response.sendRedirect("menuPrincipal.jsp?user="+confere.getId());
         }
     }
     
