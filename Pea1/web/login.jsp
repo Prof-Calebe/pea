@@ -14,32 +14,32 @@
         
         Login meuLogin = new Login();
         Login confere = null;
+        List <Login> busca = null;
         
         try{
             //abri conexao com o banco de dados
             meuLogin.abreDB();
             
-            List <Login> busca = meuLogin.pesquisaLoginPeloLogin(request.getParameter("user"), request.getParameter("senha"));
-            
+            busca = meuLogin.pesquisaLoginPeloLogin(request.getParameter("user"), request.getParameter("senha"));
+
             for(Login e : busca){
                 confere = e;
             }
             
-            meuLogin.fechaDB();
-
         }catch(Exception e){
             e.printStackTrace();
-            e.getMessage();
+            meuLogin.fechaDB();
         }
-        
-        if(confere.equals(null) != true){
+        if(busca.size() >= 1){
             response.sendRedirect("menuPrincipal.jsp?user="+confere.getId());
+        }else{
+            %>
+            <script>
+                alert("Usuário não cadastrado!\nDica:\nUsuário song \nSenha 123");
+            </script>
+            <%
         }
     }
-    
-    
-    
-    
 %>  
 
 <!DOCTYPE html>

@@ -14,15 +14,20 @@
     Login meuLogin = new Login();
     
     try{
+       
         //abre conexao com o banco
         meuLogin.abreDB();
+        
         //recebe o objevo vindo do banco
         meuLogin = meuLogin.pesquisaLoginPeloID(Long.parseLong(userID));
-        //encerra conexa com o banco
-       meuLogin.fechaDB();
+        
     }catch(Exception e){
         e.printStackTrace();
+        //encerra conexa com o banco
+        meuLogin.fechaDB();
     }
+    
+    
 %>
 
 <!--este hidden do id do usuario vai ser passado para a funcao javascript-->
@@ -59,9 +64,9 @@
             <h1>Bem Vindo!!! <%=meuLogin.getNome()%></h1>
             <br/>
             <h1>MENU PRINCIPAL</h1>
-            <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula()" />
+            <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula();" />
             <br/>
-            <input type="button" name="btn_planoEnsino" value="Visualizar Plano de Ensino" onclick="visualizarPlanoEnsino()" />
+            <input type="button" name="btn_planoEnsino" value="Visualizar Plano de Ensino" onclick="visualizarPlanoEnsino();" />
             <br/>
         </div>
     </body>
