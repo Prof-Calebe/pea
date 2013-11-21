@@ -17,10 +17,11 @@
         meuLogin.abreDB();
         //recebe o objevo vindo do banco
         meuLogin = meuLogin.pesquisaLoginPeloID(Long.parseLong(userID));
-        //encerra conexa com o banco
-       meuLogin.fechaDB();
+        
     }catch(Exception e){
         e.printStackTrace();
+        //encerra conexa com o banco
+        meuLogin.fechaDB();
     }
 %>
 
@@ -37,7 +38,24 @@
             </a>
         </div>
         <div align="center">
-            <h1>Planos de Ensino <%=meuLogin.getNome()%></h1>
+            <h1>Planos de Ensino </h1>
+            <form name="formPlanoEnsino" action="visualizarPlanoEnsino.jsp">
+                <input type="hidden" name="user" value="<%=userID%>" />
+                <input type="hidden" name="retorno" value="1"/>
+                <h3>Digite o nome da disciplina solicitada</h3>
+                <input type="text" name="txtDisciplinaEnsino" value="" size="50"/>
+                <input type="submit" value="Buscar" />
+            </form>
+            <br/>
+<%
+            if(request.getParameter("retorno").equals("1")){              
+%>
+                <h3>
+                    Mostra dados do plano de Ensino
+                </h3>
+<%
+            }
+%>
         </div>
     </body>
 </html>

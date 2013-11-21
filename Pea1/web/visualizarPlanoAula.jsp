@@ -38,7 +38,24 @@
             </a>
         </div>
         <div align="center">
-            <h1>Plano de Aula <%=meuLogin.getNome()%></h1>
+            <h1>Plano de Aula</h1>
+            <form name="formPlanoAula" action="visualizarPlanoAula.jsp">
+                <input type="hidden" name="user" value="<%=userID%>" />
+                <input type="hidden" name="retorno" value="1"/>
+                <h3>Digite o nome da disciplina solicitada</h3>
+                <input type="text" name="txtDisciplinaAula" value="" size="50"/>
+                <input type="submit" value="Buscar" />
+            </form>
+            <br/>
+<%
+            if(request.getParameter("retorno").equals("1")){              
+%>
+                <h3>
+                    Mostra dados do plano de Aula
+                </h3>
+<%
+            }
+%>
         </div>
     </body>
 </html>

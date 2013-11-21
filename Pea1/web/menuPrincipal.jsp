@@ -36,14 +36,14 @@
 <script>
     function visualizarPlanoEnsino(){
         var search = document.getElementById('userID').value;
-        window.location = "visualizarPlanoEnsino.jsp?user="+search;
+        window.location = "visualizarPlanoEnsino.jsp?user="+search+"&retorno=0";
     }
 </script>
 
 <script>
     function visualizarPlanoAula(){
         var search = document.getElementById('userID').value;
-        window.location = "visualizarPlanoAula.jsp?user="+search;
+        window.location = "visualizarPlanoAula.jsp?user="+search+"&retorno=0";
     }
 </script>
 
@@ -61,9 +61,11 @@
             </a>
         </div>
         <div align="center">
-            <h1>Bem Vindo!!! <%=meuLogin.getNome()%></h1>
+            <h1>Bem Vindo ao Sistema para o Plano de Ensino e Aula da FCI</h1>
             <br/>
             <h1>MENU PRINCIPAL</h1>
+            <br/>
+            <br/>
             <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula();" />
             <br/>
             <input type="button" name="btn_planoEnsino" value="Visualizar Plano de Ensino" onclick="visualizarPlanoEnsino();" />

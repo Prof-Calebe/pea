@@ -57,7 +57,7 @@
                 <h3>Senha:</h3>
                 <input type="password" name="senha" value="" size="25" />
                 <br/>
-                <input type="submit" value="Submit" name="Submit" />
+                <input type="submit" value="Entrar" name="Submit" />
             </form>
         </div>
     </body>
