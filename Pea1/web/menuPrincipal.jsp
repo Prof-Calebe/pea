@@ -50,7 +50,14 @@
 <script>
         function cadastrarPlanoAula(){
         var search = document.getElementById('userID').value;
-        window.location = "cadastrarPlanoAula.jsp?user="+search+"&retorno=0";
+        window.location = "formCadastrarPlanoAula.html?user="+search+"&retorno=0";
+    }
+</script>
+
+<script>
+        function cadastrarMateria(){
+        var search = document.getElementById('userID').value;
+        window.location = "formCadastrarMateria.html?user="+search+"&retorno=0";
     }
 </script>
 
@@ -73,7 +80,9 @@
             <h1>MENU PRINCIPAL</h1>
             <br/>
             <br/>
-            <input type="button" name="btn_cadastraPlanoAula" value="Cadastra Plano de Aula" onclick="cadastrarPlanoAula();" />
+            <input type="button" name="btn_cadastrarMateria" value="Cadastrar Matéria" onclick="cadastrarMateria();" />
+            <br/>
+            <input type="button" name="btn_cadastrarPlanoAula" value="Cadastra Plano de Aula" onclick="cadastrarPlanoAula();" />
             <br/>
             <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula();" />
             <br/>

@@ -2,7 +2,7 @@
     Document   : login
     Created on : 05/11/2013, 12:38:34
     Author     : Song
---%>
+<--%>
 <%@page import="java.util.*"%>
 <%@page import="Classes.BaseDAO" %>
 <%@page import="Classes.Login" %>

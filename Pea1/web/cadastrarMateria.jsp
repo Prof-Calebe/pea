@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cadastrarPlanoAula.jsp
-    Created on : 22/11/2013, 13:18:05
+    Document   : cadastrarMateria
+    Created on : 22/11/2013, 16:40:46
     Author     : thyago
 --%>
 
@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-        
-        %>
+        <h1>Hello World!</h1>
     </body>
 </html>
