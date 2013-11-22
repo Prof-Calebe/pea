@@ -46,6 +46,13 @@
         window.location = "visualizarPlanoAula.jsp?user="+search+"&retorno=0";
     }
 </script>
+    
+<script>
+        function cadastrarPlanoAula(){
+        var search = document.getElementById('userID').value;
+        window.location = "cadastrarPlanoAula.jsp?user="+search+"&retorno=0";
+    }
+</script>
 
 
 <!DOCTYPE html>
@@ -66,10 +73,12 @@
             <h1>MENU PRINCIPAL</h1>
             <br/>
             <br/>
+            <input type="button" name="btn_cadastraPlanoAula" value="Cadastra Plano de Aula" onclick="cadastrarPlanoAula();" />
+            <br/>
             <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula();" />
             <br/>
             <input type="button" name="btn_planoEnsino" value="Visualizar Plano de Ensino" onclick="visualizarPlanoEnsino();" />
-            <br/>
+            <br/>            
         </div>
     </body>
 </html>
