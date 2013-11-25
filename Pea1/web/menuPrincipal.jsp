@@ -50,14 +50,14 @@
 <script>
         function cadastrarPlanoAula(){
         var search = document.getElementById('userID').value;
-        window.location = "formCadastrarPlanoAula.html?user="+search+"&retorno=0";
+        window.location = "formCadastrarPlanoAula.jsp?user="+search+"&retorno=0";
     }
 </script>
 
 <script>
         function cadastrarMateria(){
         var search = document.getElementById('userID').value;
-        window.location = "formCadastrarMateria.html?user="+search+"&retorno=0";
+        window.location = "formCadastrarMateria.jsp?user="+search+"&retorno=0";
     }
 </script>
 

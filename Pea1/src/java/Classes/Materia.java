@@ -21,7 +21,7 @@ public class Materia extends BaseDAO implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nomeMateria;
-
+    private Long idUsuario;
        
     /**
      * @return the nomeMateria
@@ -37,6 +37,17 @@ public class Materia extends BaseDAO implements Serializable{
         this.nomeMateria = nomeMateria;
     }
     
+     /**
+     * @return the idUsuario
+     */
+    public Long getidUsuario() {
+        return idUsuario;
+    }
    
-    
+    /**
+     * @param id the idUsuario to set
+     */
+     public void setidUsuario(Long id) {     
+        this.idUsuario = id;
+    }
 }

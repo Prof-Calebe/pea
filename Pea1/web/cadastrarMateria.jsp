@@ -15,9 +15,10 @@
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-
+    String userID = new String(request.getParameter("user"));
     Materia nova_materia = new Materia();
     nova_materia.setNomeMateria(request.getParameter("nomeMateria"));
+    nova_materia.setidUsuario(Long.parseLong(userID));
     
     //persistindo o objeto no banco
     EntityManagerFactory factory = nova_materia.retornaFactory();
@@ -43,6 +44,6 @@
     </head>
     <body>
         <h2>Matéria <% out.println(nova_materia.getNomeMateria());  %> cadastrada com sucesso. </h2>
-        <a href="formCadastrarMateria.html">Voltar</a>
+        <a href="formCadastrarMateria.jsp?user=<%out.println(userID);%>&retorno=0">Voltar</a>
     </body>
 </html>
