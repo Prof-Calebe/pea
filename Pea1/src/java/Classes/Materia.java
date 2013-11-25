@@ -22,6 +22,7 @@ public class Materia extends BaseDAO implements Serializable{
     private Long id;
     private String nomeMateria;
 
+       
     /**
      * @return the nomeMateria
      */
