@@ -16,8 +16,6 @@ import javax.persistence.Query;
 
 
 public class BaseDAO {
-	
-
 	//fabrica de conexao
 	private EntityManagerFactory factory;
 	//manager de objetos do banco
@@ -25,7 +23,6 @@ public class BaseDAO {
 	
 	//devolve o manager em uso
 	public EntityManager retornaManager(){
-		
 		return manager;
 	}
 	
@@ -36,7 +33,6 @@ public class BaseDAO {
 	
 	
 	public void abreDB(){
-            
 		factory = Persistence.createEntityManagerFactory("Pea1PU"); 
 		manager = factory.createEntityManager();
 	}
@@ -56,8 +52,8 @@ public class BaseDAO {
 	//salvar como pra atualizar os dados
 	public void salvar(Object o){
 		try{
-		manager.persist(o);
 		manager.getTransaction().begin();
+        manager.persist(o);
 		manager.getTransaction().commit();
 		}catch(Exception e){
 			System.out.println("deu erro de salvar");
@@ -66,8 +62,8 @@ public class BaseDAO {
 	
 	//remove 
 	public void remover(Object o){
-		manager.remove(o);
 		manager.getTransaction().begin();
+        manager.remove(o);
 		manager.getTransaction().commit();
 	}
 	
