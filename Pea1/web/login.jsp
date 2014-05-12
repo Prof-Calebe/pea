@@ -1,44 +1,31 @@
 <%-- 
-    Document   : login
-    Created on : 05/11/2013, 12:38:34
-    Author     : Song
-<--%>
+    Document   : login2
+    Created on : May 11, 2014, 5:29:42 PM
+    Author     : Adriano
+--%>
 <%@page import="java.util.*"%>
 <%@page import="Classes.BaseDAO" %>
 <%@page import="Classes.Login" %>
-<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%  
     //logica para verificar se o usuario esta cadastrado
-    if(request.getParameter("user") != null && request.getParameter("senha") != null){
-        
-        Login meuLogin = new Login();
-        Login confere = null;
-        List <Login> busca = null;
-        
-        try{
-            //abri conexao com o banco de dados
-            meuLogin.abreDB();
-            
-            busca = meuLogin.pesquisaLoginPeloLogin(request.getParameter("user"), request.getParameter("senha"));
+        //logica para verificar se o usuario esta cadastrado
+    if(request.getParameter("user") != null && request.getParameter("senha") != null)
+    {
+        Login credentials = new Login(request.getParameter("user"), request.getParameter("senha"), "");
+        credentials.abreDB();
+        credentials.Validate();
+        if (credentials.getId() != 0)
+        {
+            response.sendRedirect("menuPrincipal.jsp?user="+credentials.getId());
+        }
 
-            for(Login e : busca){
-                confere = e;
-            }
-            
-        }catch(Exception e){
-            e.printStackTrace();
-            meuLogin.fechaDB();
+        if (request.getParameter("save") != null)
+        {
+            credentials.Save();
         }
-        if(busca.size() >= 1){
-            response.sendRedirect("menuPrincipal.jsp?user="+confere.getId());
-        }else{
-            %>
-            <script>
-                alert("Usuário não cadastrado!\nDica:\nUsuário song \nSenha 123");
-            </script>
-            <%
-        }
+        credentials.fechaDB();
     }
 %>  
 

@@ -8,8 +8,8 @@ package Classes;
  *
  * @author Song
  */
-import java.util.List;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType;
@@ -20,12 +20,12 @@ import javax.persistence.Query;
 public class Login extends BaseDAO implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     
     private String nome;
     private String senha;
     private String tipoLogin;
-
+    
     public Login(){
         super();
     }
@@ -61,12 +61,28 @@ public class Login extends BaseDAO implements Serializable{
         this.tipoLogin = tipoLogin;
     }
     
-     public void setId(Long id) {
-        this.id = id;
+    public void setID(int newID)
+    {
+        this.id = newID;
     }
-
-    public Long getId() {
+    
+    public int getId() {
         return id;
+    }
+    
+    public void Validate() {
+        List<Login> result = retornaManager().createQuery("SELECT l from Login l where l.nome = :name and l.senha = :password").setParameter("name", this.nome).setParameter("password", this.senha).getResultList();
+        if (result.size() > 0)
+        {
+            Login t = result.iterator().next();
+            this.id = t.getId();
+        }
+            
+    }
+    
+    public void Save() {
+        System.out.println("abc");
+        salvar(this);
     }
     
     public Login pesquisaLoginPeloID(Long id){

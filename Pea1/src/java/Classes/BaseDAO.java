@@ -9,6 +9,8 @@ package Classes;
  * @author Song
  */
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -33,7 +35,7 @@ public class BaseDAO {
 	
 	
 	public void abreDB(){
-		factory = Persistence.createEntityManagerFactory("Pea1PU"); 
+		factory = Persistence.createEntityManagerFactory("$objectdb/db/Pea.odb"); 
 		manager = factory.createEntityManager();
 	}
 	
@@ -51,10 +53,11 @@ public class BaseDAO {
 	
 	//salvar como pra atualizar os dados
 	public void salvar(Object o){
+        System.out.println("asd");
 		try{
-		manager.getTransaction().begin();
+        manager.getTransaction().begin();
         manager.persist(o);
-		manager.getTransaction().commit();
+        manager.getTransaction().commit();
 		}catch(Exception e){
 			System.out.println("deu erro de salvar");
 		}
