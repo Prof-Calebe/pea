@@ -4,6 +4,7 @@
  */
 
 import Classes.Login;
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -42,12 +43,11 @@ public class TesteLogin {
     // @Test
     // public void hello() {}
     @Test
-    public void insereNovoLogin(){
-        Login meuLogin = new Login();
-        meuLogin.setNome("nome");
-        meuLogin.setSenha("senha");
-        assertArrayEquals(new Object[]{"nome"}, new Object[]{meuLogin.getNome()});
-        assertArrayEquals(new Object[]{"senha"}, new Object[]{meuLogin.getSenha()});
-        
+    public void TestDataIntegrity(){
+        Login credentials = new Login("Nome", "Senha", "Acesso");
+        Assert.assertEquals("Nome", credentials.getNome());
+        Assert.assertEquals("Senha", credentials.getSenha());
+        Assert.assertEquals("Acesso", credentials.getTipoLogin());
     }
+
 }
