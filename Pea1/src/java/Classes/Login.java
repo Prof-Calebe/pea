@@ -76,27 +76,24 @@ public class Login extends BaseDAO implements Serializable{
         {
             Login t = result.iterator().next();
             this.id = t.getId();
+            setTipoLogin(t.getTipoLogin());
         }
             
     }
     
     public void Save() {
-        System.out.println("abc");
         salvar(this);
     }
     
-    public Login pesquisaLoginPeloID(Long id){
+    public void LoadLoginByID(int id){
         try{
-            return retornaManager().find(Login.class, id);
-        }catch(Exception e){
-            return null;
-        }      
+            Login credentials = retornaManager().find(Login.class, id);
+            this.id = credentials.getId();
+            setNome(credentials.getNome());
+            setSenha(credentials.getSenha());
+            setTipoLogin(credentials.getTipoLogin());
+        }
+            catch(Exception e){
+        }
     }
-    
-    public List<Login> pesquisaLoginPeloLogin(String nome, String senha){
-        Query minhaQuery = retornaManager().createQuery("select u from Login u where u.nome = '"+nome+ "' and u.senha = '"+senha+"'" );
-        List<Login> retorno = minhaQuery.getResultList();
-        return retorno;
-    }
-    
 }
