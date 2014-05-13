@@ -4,13 +4,10 @@
     Author     : Adriano
 --%>
 <%@page import="java.util.*"%>
-<%@page import="Classes.BaseDAO" %>
 <%@page import="Classes.Login" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%  
-    //logica para verificar se o usuario esta cadastrado
-        //logica para verificar se o usuario esta cadastrado
     if(request.getParameter("user") != null && request.getParameter("senha") != null)
     {
         Login credentials = new Login(request.getParameter("user"), request.getParameter("senha"), "");
@@ -18,13 +15,16 @@
         credentials.Validate();
         if (credentials.getId() != 0)
         {
-            response.sendRedirect("menuPrincipal.jsp?user="+credentials.getId());
+            request.getSession().setAttribute("sessionID", credentials.getId());
+            response.sendRedirect("menuPrincipal.jsp");
         }
 
+        /*
         if (request.getParameter("save") != null)
         {
             credentials.Save();
         }
+        */
         credentials.fechaDB();
     }
 %>  
