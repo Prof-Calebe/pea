@@ -49,5 +49,4 @@ public class TesteLogin {
         Assert.assertEquals("Senha", credentials.getSenha());
         Assert.assertEquals("Acesso", credentials.getTipoLogin());
     }
-
 }
