@@ -8,65 +8,24 @@
 <%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<%  // recebendo o id do usuario passado pelo paramento enviado pelo form no metodo get
-    String userID = new String(request.getParameter("user"));
-    
-    Login meuLogin = new Login();
-    
-    try{
-       
-        //abre conexao com o banco
-        meuLogin.abreDB();
-        
-        //recebe o objevo vindo do banco
-        meuLogin = meuLogin.pesquisaLoginPeloID(Long.parseLong(userID));
-        
-    }catch(Exception e){
-        e.printStackTrace();
-        //encerra conexa com o banco
-        meuLogin.fechaDB();
+<%
+    Integer userID = (Integer)request.getSession(true).getAttribute("sessionID");
+
+    if (userID == null)
+    {
+        response.sendRedirect("login.jsp");
     }
-    
-    
 %>
-
-<!--este hidden do id do usuario vai ser passado para a funcao javascript-->
-<input type="hidden" id="userID" value="<%=meuLogin.getId()%>" />
-
-<script>
-    function visualizarPlanoEnsino(){
-        var search = document.getElementById('userID').value;
-        window.location = "visualizarPlanoEnsino.jsp?user="+search+"&retorno=0";
-    }
-</script>
-
-<script>
-    function visualizarPlanoAula(){
-        var search = document.getElementById('userID').value;
-        window.location = "visualizarPlanoAula.jsp?user="+search+"&retorno=0";
-    }
-</script>
-    
-<script>
-        function cadastrarPlanoAula(){
-        var search = document.getElementById('userID').value;
-        window.location = "formCadastrarPlanoAula.jsp?user="+search+"&retorno=0";
-    }
-</script>
-
-<script>
-        function cadastrarMateria(){
-        var search = document.getElementById('userID').value;
-        window.location = "formCadastrarMateria.jsp?user="+search+"&retorno=0";
-    }
-</script>
-
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema para o plano de Ensino e Aula da FCI</title>
+        <style>
+            a, a:hover, a:visited {color: #000;text-decoration: none}
+            .menu-button {border: 1px solid #000; padding: 5px; width: 250px; height: 35px;display: block; margin-bottom: 15px;}
+        </style>
     </head>
     <body>
         <div align="right">
@@ -80,14 +39,11 @@
             <h1>MENU PRINCIPAL</h1>
             <br/>
             <br/>
-            <input type="button" name="btn_cadastrarMateria" value="Cadastrar Matéria" onclick="cadastrarMateria();" />
-            <br/>
-            <input type="button" name="btn_cadastrarPlanoAula" value="Cadastra Plano de Aula" onclick="cadastrarPlanoAula();" />
-            <br/>
-            <input type="button" name="btn_planoAula" value="Visualizar Plano de Aula" onclick="visualizarPlanoAula();" />
-            <br/>
-            <input type="button" name="btn_planoEnsino" value="Visualizar Plano de Ensino" onclick="visualizarPlanoEnsino();" />
-            <br/>            
+            <span class="menu-button"><a href="cadastrarMateria.jsp">Cadastrar Matéria</a></span>
+            <span class="menu-button"><a href="cadastrarPlanoAula.jsp">Cadastra Plano de Aula</a></span>
+            <span class="menu-button"><a href="visualizarPlanoAula.jsp">Visualizar Plano de Aula</a></span>
+            <span class="menu-button"><a href="visualizarPlanoEnsino.jsp">Visualizar Plano de Ensino</a></span>
+            <span class="menu-button"><a href="logout.jsp">Logout</a></span>
         </div>
     </body>
 </html>
