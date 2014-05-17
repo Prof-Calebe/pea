@@ -107,4 +107,26 @@ public class TesteLogin {
         Login credentials2 = Login.LoadLoginByID(-1);
         Assert.assertNull(credentials2);
     }
+    
+    @Test
+    public void TestValidNameLoading()
+    {
+        Login credentials = new Login("usuarioTeste123", "senhaTeste123", "Acesso");
+        dataBaseConnection.salvar(credentials);
+        
+        Login credentials2 = Login.LoadLoginByName("usuarioTeste123");
+        Assert.assertEquals(credentials.getId(), credentials2.getId());
+        
+        // Cleanup
+        dataBaseConnection.retornaManager().clear();
+        credentials = dataBaseConnection.retornaManager().find(Login.class, credentials.getId());
+        dataBaseConnection.remover(credentials);
+    }
+    
+    @Test
+    public void TestInvalidNameLoading()
+    {
+        Login credentials = Login.LoadLoginByName("uuuuuuuuuuu");
+        Assert.assertNull(credentials);
+    }
 }
