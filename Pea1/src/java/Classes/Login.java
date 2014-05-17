@@ -101,7 +101,7 @@ public class Login implements Serializable{
         return credentials;
     }
     
-    public Login LoadLoginByName(String username){
+    static public Login LoadLoginByName(String username){
         Login credentials = null;
         BaseDAO db = new BaseDAO();
         db.abreDB();
