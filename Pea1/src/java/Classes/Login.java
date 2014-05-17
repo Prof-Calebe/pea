@@ -9,18 +9,23 @@ package Classes;
  * @author Song
  */
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
 public class Login implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
+    @Column(unique=true)
     private String nome;
     private String senha;
     private String tipoLogin;
@@ -64,6 +69,10 @@ public class Login implements Serializable{
         return id;
     }
     
+    public boolean isValid() {
+        return (id != 0);
+    }
+    
     public void Validate() {
         BaseDAO db = new BaseDAO();
         db.abreDB();
@@ -90,5 +99,35 @@ public class Login implements Serializable{
         catch(Exception e){
         }
         return credentials;
+    }
+    
+    public Login LoadLoginByName(String username){
+        Login credentials = null;
+        BaseDAO db = new BaseDAO();
+        db.abreDB();
+        List<Login> result = db.retornaManager().createQuery("SELECT l FROM Login l WHERE l.nome = :name").setParameter("name", username).getResultList();
+        db.fechaDB();
+        
+        if (result.size() > 0)
+        {
+            credentials = result.iterator().next();
+        }
+ 
+        return credentials;
+    }
+    
+    @Override
+    public int hashCode() {
+        return getId();
+    }
+ 
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Login){
+            Login credentials = (Login) obj;
+            return this.hashCode()==credentials.hashCode();
+        }
+ 
+        return false;
     }
 }
