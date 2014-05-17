@@ -14,10 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Query;
 
 @Entity
-public class Login extends BaseDAO implements Serializable{
+public class Login implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -61,17 +60,16 @@ public class Login extends BaseDAO implements Serializable{
         this.tipoLogin = tipoLogin;
     }
     
-    public void setID(int newID)
-    {
-        this.id = newID;
-    }
-    
     public int getId() {
         return id;
     }
     
     public void Validate() {
-        List<Login> result = retornaManager().createQuery("SELECT l from Login l where l.nome = :name and l.senha = :password").setParameter("name", this.nome).setParameter("password", this.senha).getResultList();
+        BaseDAO db = new BaseDAO();
+        db.abreDB();
+        List<Login> result = db.retornaManager().createQuery("SELECT l from Login l where l.nome = :name and l.senha = :password").setParameter("name", this.nome).setParameter("password", this.senha).getResultList();
+        db.fechaDB();
+        
         if (result.size() > 0)
         {
             Login t = result.iterator().next();
@@ -81,19 +79,16 @@ public class Login extends BaseDAO implements Serializable{
             
     }
     
-    public void Save() {
-        salvar(this);
-    }
-    
-    public void LoadLoginByID(int id){
+    static public Login LoadLoginByID(int id){
+        Login credentials = null;
         try{
-            Login credentials = retornaManager().find(Login.class, id);
-            this.id = credentials.getId();
-            setNome(credentials.getNome());
-            setSenha(credentials.getSenha());
-            setTipoLogin(credentials.getTipoLogin());
+            BaseDAO db = new BaseDAO();
+            db.abreDB();
+            credentials = db.retornaManager().find(Login.class, id);
+            db.fechaDB();
         }
-            catch(Exception e){
+        catch(Exception e){
         }
+        return credentials;
     }
 }
