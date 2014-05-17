@@ -8,24 +8,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%  
+    String erro;
+    erro = "";
     if(request.getParameter("user") != null && request.getParameter("senha") != null)
     {
         Login credentials = new Login(request.getParameter("user"), request.getParameter("senha"), "");
-        credentials.abreDB();
         credentials.Validate();
         if (credentials.getId() != 0)
         {
             request.getSession().setAttribute("sessionID", credentials.getId());
             response.sendRedirect("menuPrincipal.jsp");
         }
-
-        /*
-        if (request.getParameter("save") != null)
+        else
         {
-            credentials.Save();
+            erro = "<span class=\"error\">Usuário não cadastrado</span><br>";
         }
-        */
-        credentials.fechaDB();
+
     }
 %>  
 
@@ -34,11 +32,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema para o plano de Ensino e Aula da FCI</title>
+        <style>.error{color:#F00;font-weight:bold}</style>
     </head>
     <body>
         <div align="center">
             <h1>Login</h1>
-            <form name="formLogin" action="login.jsp">
+            <% 
+                out.println(erro);
+            %>
+            <form name="formLogin" action="login.jsp" method="POST">
                 <h3>Nome:</h3>
                 <input type="text" name="user" value="" size="25" />
                 <h3>Senha:</h3>
