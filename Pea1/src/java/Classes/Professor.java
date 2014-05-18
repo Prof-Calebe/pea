@@ -42,8 +42,12 @@ public class Professor implements Serializable {
     }
    public void setAutorizacao(NDE nde,Colegiado colegiado){
        if(nde.AutorizarProfessor(drt,nome)){
-        this.autorizado=true;}
-    }
+           if(colegiado.AutorizarProfessor(drt, nome)){
+                this.autorizado=true;}
+           else {System.out.println("Aguardando Autorização Colegiado");}
+            
+     }
+   }
    
     public String getNome(){
         return this.nome;
@@ -54,18 +58,24 @@ public class Professor implements Serializable {
     public boolean getAutorizacao(){
         return this.autorizado;
     }
-    public void Validate() {
+    public boolean Validate(Professor professor) {
         BaseDAO db = new BaseDAO();
         db.abreDB();
-        List<Professor> result = db.retornaManager().createQuery("SELECT l from Professor l where l.drt = :drt and l.nome = :nome").setParameter("drt", this.drt).setParameter("nome", this.nome).setParameter("autorização", this.autorizado).getResultList();
+        List<Professor> result = db.retornaManager().createQuery("SELECT p from Professor p where p.drt = :drt and p.nome = :nome").setParameter("drt", this.drt).setParameter("nome", this.nome).getResultList();
         db.fechaDB();
         
         if (result.size() > 0)
         {
             Professor t = result.iterator().next();
-            //this.id = t.getId();
+            if(t.getDrt()==professor.getDrt())
+                return true;
+            
             //setTipoLogin(t.getTipoLogin());
         }
-            
+            return false;
+    }
+    @Override
+    public String toString() {
+        return "drt: "+ this.getDrt()+" Nome: "+getNome() + " Autorizado: "+ this.getAutorizacao();
     }
 }

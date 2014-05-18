@@ -6,6 +6,8 @@
 
 package Classes;
 
+import java.util.List;
+
 /**
  *
  * @author Wanderson
@@ -15,7 +17,15 @@ public class ProfessorCreating {
         Professor professor= new Professor(1234,"Calebe");
         BaseDAO db = new BaseDAO();
         db.abreDB();
-        db.salvar(professor);
+        //db.salvar(professor);
+        
+        
+        List<Professor> result;
+        result = db.retornaManager().createQuery("SELECT p FROM Professor p WHERE p.drt = :drt").setParameter("drt", professor.getDrt()).getResultList();
+        
+        for (Professor p: result){
+            System.out.println(p);
+        }
         db.fechaDB();
     }
 }

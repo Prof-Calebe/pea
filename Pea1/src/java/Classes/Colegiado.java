@@ -16,10 +16,13 @@ public class Colegiado extends Professor{
         super(Id, Nome);
         this.autorizado=true;
     }
-    public boolean AutorizarProfessor(Professor professor){
-        long drt;String nome;
-        drt=professor.getDrt();
-        nome=professor.getNome();
-        return true;
+    public boolean AutorizarProfessor(long drt,String nome){
+        Professor professor= new Professor(drt,nome);
+        if(Validate(professor)){
+            return true;
+        }
+        
+        return false;
+        
     }
 }

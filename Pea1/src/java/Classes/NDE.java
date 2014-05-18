@@ -18,11 +18,10 @@ public class NDE extends Professor {
     }
     public boolean AutorizarProfessor(long drt,String nome){
         Professor professor= new Professor(drt,nome);
+        if(Validate(professor)){
+            return true;
+        }
         
-        professor.Validate();
-        drt=professor.getDrt();
-        nome=professor.getNome();
-        
-        return true;
+        return false;
     }
 }
