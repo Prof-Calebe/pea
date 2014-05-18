@@ -28,7 +28,7 @@ public class Professor implements Serializable {
         super();
     }
     
-    Professor(long Drt, String Nome){
+    public Professor(long Drt, String Nome){
         super();
         this.drt=Drt;
         this.nome=Nome;
