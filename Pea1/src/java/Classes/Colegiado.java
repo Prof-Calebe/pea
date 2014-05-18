@@ -11,12 +11,15 @@ package Classes;
  * @author Wanderson
  */
 public class Colegiado extends Professor{
-    
+    private boolean autorizado;
     public Colegiado(long Id, String Nome) {
         super(Id, Nome);
+        this.autorizado=true;
     }
-    public void AutorizarProfessor(Professor professor){
-        
-        professor.setAutorizacao(true);
+    public boolean AutorizarProfessor(Professor professor){
+        long drt;String nome;
+        drt=professor.getDrt();
+        nome=professor.getNome();
+        return true;
     }
 }

@@ -12,12 +12,17 @@ package Classes;
  */
 public class NDE extends Professor {
     private boolean autorizado;
-    public NDE(long Id, String Nome,boolean Autorizado) {
+    public NDE(long Id, String Nome) {
         super(Id, Nome);
-        this.autorizado=Autorizado;
+        this.autorizado=true;
     }
-    public void AutorizarProfessor(Professor professor){
-        professor.getId();
-        professor.setAutorizacao(true);
+    public boolean AutorizarProfessor(long drt,String nome){
+        Professor professor= new Professor(drt,nome);
+        
+        professor.Validate();
+        drt=professor.getDrt();
+        nome=professor.getNome();
+        
+        return true;
     }
 }

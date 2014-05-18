@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Classes.BaseDAO;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +17,7 @@ import static org.junit.Assert.*;
  * @author Wanderson
  */
 public class TesteAutorizarProfessor {
-    
+    private BaseDAO dataBaseConnection;
     public TesteAutorizarProfessor() {
     }
     
@@ -30,10 +31,13 @@ public class TesteAutorizarProfessor {
     
     @Before
     public void setUp() {
+        dataBaseConnection = new BaseDAO();
+        dataBaseConnection.abreDB();
     }
     
     @After
     public void tearDown() {
+        dataBaseConnection.fechaDB();
     }
 
     // TODO add test methods here.
