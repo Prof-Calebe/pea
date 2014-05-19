@@ -47,25 +47,23 @@ public class TesteAutorizarProfessor {
     public void ValidaAutoriza(){
         Professor p1 = new Professor(12345, "Calebe");
         Professor p2 = new Professor(12346, "Joaquim");
-        Colegiado p3 = new Colegiado(123, "Ana");
-        NDE p4 = new NDE(12, "Vallim");
+        //Colegiado p3 = new Colegiado(123, "Ana");
+        //NDE p4 = new NDE(12, "Vallim");
 
         dataBaseConnection.salvar(p1);
         dataBaseConnection.salvar(p2);
-        dataBaseConnection.salvar(p3);
-        dataBaseConnection.salvar(p4);
+        //dataBaseConnection.salvar(p3);
+        //dataBaseConnection.salvar(p4);
         
         Professor p5 = new Professor(12345, "Calebe");
-        Professor p6 = new Professor(12346, "Joaquim");
-        Colegiado p7 = new Colegiado(123, "Ana");
-        NDE p8 = new NDE(12, "Vallim");
+        //Professor p6 = new Professor(12346, "Joaquim");
+        //Colegiado p7 = new Colegiado(123, "Ana");
+        //NDE p8 = new NDE(12, "Vallim");
         
-        Assert.assertTrue (p8.Validate(p5));
-        Assert.assertTrue (p8.Validate(p6));
-        Assert.assertTrue (p8.Validate(p7));
+        Assert.assertTrue (p5.Validate());
+        //Assert.assertTrue (p6.Validate());
+        //Assert.assertTrue (p7.Validate());
         
-        Assert.assertTrue(p8.AutorizarProfessor(12345,"Calebe"));
-        Assert.assertTrue(p8.AutorizarProfessor(12346,"Joaquim"));
         
         
     }

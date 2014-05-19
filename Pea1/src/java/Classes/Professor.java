@@ -22,7 +22,7 @@ public class Professor implements Serializable {
     
     private long drt;
     private String nome;
-    private boolean autorizado;
+    //private boolean autorizado;
 
     public Professor() {
         super();
@@ -32,7 +32,7 @@ public class Professor implements Serializable {
         super();
         this.drt=Drt;
         this.nome=Nome;
-        this.autorizado=false;
+        //this.autorizado=false;
     }
     public void setNome(String Nome){
         this.nome=Nome;
@@ -40,14 +40,18 @@ public class Professor implements Serializable {
     public void setDrt(long drt){
             this.drt=drt;
     }
-   public void setAutorizacao(NDE nde,Colegiado colegiado){
+   /*public void setAutorizacao(NDE nde,Colegiado colegiado){
        if(nde.AutorizarProfessor(drt,nome)){
            if(colegiado.AutorizarProfessor(drt, nome)){
                 this.autorizado=true;}
            else {System.out.println("Aguardando Autorização Colegiado");}
             
      }
-   }
+   }*/
+
+    public long getId() {
+        return id;
+    }
    
     public String getNome(){
         return this.nome;
@@ -55,10 +59,10 @@ public class Professor implements Serializable {
     public Long getDrt(){
         return this.drt;
     }
-    public boolean getAutorizacao(){
+    /*public boolean getAutorizacao(){
         return this.autorizado;
-    }
-    public boolean Validate(Professor professor) {
+    }*/
+    public boolean Validate() {
         BaseDAO db = new BaseDAO();
         db.abreDB();
         List<Professor> result = db.retornaManager().createQuery("SELECT p from Professor p where p.drt = :drt and p.nome = :nome").setParameter("drt", this.drt).setParameter("nome", this.nome).getResultList();
@@ -67,7 +71,7 @@ public class Professor implements Serializable {
         if (result.size() > 0)
         {
             Professor t = result.iterator().next();
-            if(t.getDrt()==professor.getDrt())
+            if(t.getDrt()==this.getDrt())
                 return true;
             
             //setTipoLogin(t.getTipoLogin());
@@ -76,6 +80,6 @@ public class Professor implements Serializable {
     }
     @Override
     public String toString() {
-        return "drt: "+ this.getDrt()+" Nome: "+getNome() + " Autorizado: "+ this.getAutorizacao();
+        return "drt: "+ this.getDrt()+" Nome: "+getNome() + " Autorizado: "/*+ this.getAutorizacao()*/;
     }
 }

@@ -6,22 +6,27 @@
 
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Wanderson
  */
-public class NDE extends Professor {
-    private boolean autorizado;
+public class NDE extends Professor implements Serializable {
+    //private boolean autorizado;
     public NDE(long Id, String Nome) {
         super(Id, Nome);
-        this.autorizado=true;
+        //this.autorizado=true;
     }
-    public boolean AutorizarProfessor(long drt,String nome){
+    public boolean AutorizarProfessor(long drt,String nome, String materia){
         Professor professor= new Professor(drt,nome);
-        if(Validate(professor)){
+        if(professor.Validate()){
+            BaseDAO db = new BaseDAO();
+            db.abreDB();
+            int executeUpdate = db.retornaManager().createQuery("UPDATE Materia SET idUsuario = :id WHERE nomeMateria = :nome").setParameter("id", professor.getId()).setParameter("nome", materia).executeUpdate();
+            db.fechaDB();
             return true;
         }
-        
         return false;
     }
 }

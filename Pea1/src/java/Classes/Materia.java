@@ -22,7 +22,13 @@ public class Materia extends BaseDAO implements Serializable{
     private Long id;
     private String nomeMateria;
     private Long idUsuario;
-       
+
+    public Materia(Long id, String nomeMateria, Long idUsuario) {
+        this.id = id;
+        this.nomeMateria = nomeMateria;
+        this.idUsuario = null;
+    }
+    
     /**
      * @return the nomeMateria
      */

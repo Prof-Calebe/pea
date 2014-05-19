@@ -53,6 +53,7 @@ public class BaseDAO {
             manager.getTransaction().begin();
             manager.persist(o);
             manager.getTransaction().commit();
+            System.out.println("salvou");
 		}catch(Exception e){
 			System.out.println("deu erro de salvar");
 		}
