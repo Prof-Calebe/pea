@@ -80,6 +80,6 @@ public class Professor implements Serializable {
     }
     @Override
     public String toString() {
-        return "drt: "+ this.getDrt()+" Nome: "+getNome() + " Autorizado: "/*+ this.getAutorizacao()*/;
+        return "drt: "+ this.getDrt()+" Nome: "+getNome() + " Autorizado: ";
     }
 }
