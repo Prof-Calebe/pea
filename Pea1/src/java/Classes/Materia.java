@@ -26,6 +26,9 @@ public class Materia extends BaseDAO implements Serializable{
     private Long idUsuario;
     private String plano;
 
+    public Materia() {
+    }
+
     public Materia(String nomeMateria, String s) {
         //this.id = id;
         this.nomeMateria = nomeMateria;
