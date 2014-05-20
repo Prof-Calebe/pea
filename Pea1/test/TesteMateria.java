@@ -40,7 +40,7 @@ public class TesteMateria {
     public void tearDown() {
         dataBaseConnection.fechaDB();
     }
-/*
+
     @Test
     public void TestDataIntegrity()
     {
@@ -51,13 +51,13 @@ public class TesteMateria {
         
         materia.setPlano("Mais Testes");
         Assert.assertEquals("Mais Testes", materia.getPlano());
-    }*/
-    
+    }
+ /*   
     public void testaQuery(){
         Materia materia = new Materia("Teste", "Testes");
         dataBaseConnection.salvar(materia);
         
-        Query query = dataBaseConnection.retornaManager().createQuery("SELECT m from Materia m where m.nomeMateria = :name").setParameter("name", materia.getNomeMateria());
+        Query query = dataBaseConnection.retornaManager().createQuery("SELECT m from Materia m where m.nomeMateria = :name").setParameter("name", "teste");
         Materia m1 = (Materia) query.getSingleResult();
         assertFalse(m1.Validate());
          
@@ -66,7 +66,7 @@ public class TesteMateria {
         dataBaseConnection.retornaManager().clear();
         materia = dataBaseConnection.retornaManager().find(Materia.class, materia.getId());
         dataBaseConnection.remover(materia);
-    }/*
+    }*/
     @Test
     public void TestVizualizaPlano(){
          Materia materia= new Materia("Teste de Software","Sem Plano de Ensino");
@@ -78,8 +78,8 @@ public class TesteMateria {
         dataBaseConnection.retornaManager().clear();
         materia = dataBaseConnection.retornaManager().find(Materia.class, materia.getId());
         dataBaseConnection.remover(materia);
-    }*/
-   /* @Test
+    }
+    @Test
     public void TestVizualizaPlanoNaocadastrado(){
          Materia m1= new Materia("Teste de Software","Sem Plano de Ensino");
          Materia m2= new Materia("Padroes de Projeto","GOF");
@@ -98,8 +98,8 @@ public class TesteMateria {
         dataBaseConnection.remover(m1);
         dataBaseConnection.remover(m2);
         dataBaseConnection.remover(m3);
-    }*/
-    /*
+    }
+    
     @Test
     public void TestMateriaExite(){
          Materia m1= new Materia("Teste de Software","Sem Plano de Ensino");
@@ -120,6 +120,7 @@ public class TesteMateria {
         dataBaseConnection.remover(m2);
         dataBaseConnection.remover(m3);
     }
+    
     @Test
     public void TestMateriaNaoExite(){
          Materia m1= new Materia("Teste de Software","Sem Plano de Ensino");
@@ -140,5 +141,5 @@ public class TesteMateria {
         dataBaseConnection.remover(m1);
         dataBaseConnection.remover(m2);
         dataBaseConnection.remover(m3);
-    }*/
+    }
 }
